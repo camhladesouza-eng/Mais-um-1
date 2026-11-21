@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mais Um — Compre um e ganhe outro</title>
+<meta name="description" content="Um ano de acesso ao Mais Um: um cupom para cada estabelecimento parceiro. Restaurantes, pizzarias, padarias, cafeterias, sorveterias e muito mais.">
+<meta name="theme-color" content="#6C2BD9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF8A00'/%3E%3Cstop offset='.5' stop-color='%23EA1D2C'/%3E%3Cstop offset='1' stop-color='%236C2BD9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='130' fill='url(%23g)'/%3E%3Crect x='120' y='236' width='120' height='40' rx='20' fill='%23fff'/%3E%3Crect x='160' y='196' width='40' height='120' rx='20' fill='%23fff'/%3E%3Crect x='326' y='180' width='48' height='152' rx='24' fill='%23fff'/%3E%3Cpath d='M294 232L342 196' stroke='%23fff' stroke-width='46' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --laranja:#FF8A00; --vermelho:#EA1D2C; --roxo:#6C2BD9; --roxo-escuro:#4B1A8F; --noite:#2B1055; --branco:#fff; --texto:#2B1055;
+  --display:'Baloo 2','Arial Rounded MT Bold',Arial,sans-serif;
+  --corpo:'Nunito','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--corpo);font-size:18px;line-height:1.6;color:var(--texto);background:var(--branco)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.01em}
+
+/* cabeçalho */
+.topo{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marca svg{width:48px;height:48px}
+.marca span{font-family:var(--display);font-weight:800;font-size:34px;color:var(--roxo);letter-spacing:-.02em}
+.marca span i{font-style:normal;color:var(--laranja)}
+.btn{display:inline-block;font-family:var(--display);font-weight:800;font-size:20px;text-decoration:none;padding:14px 28px;border-radius:999px;background:var(--vermelho);color:#fff;border:0;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.claro{background:transparent;color:var(--roxo);box-shadow:inset 0 0 0 3px var(--roxo)}
+.topo .btn{padding:10px 22px;font-size:18px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:32px;align-items:center;padding:24px 0 72px}
+.hero h1{font-size:clamp(48px,7.5vw,92px);font-weight:800;color:var(--roxo)}
+.hero p{max-width:30em;margin:20px 0 28px;font-size:20px}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .preco-mini{margin-top:20px;font-weight:700}
+.hero .preco-mini b{font-family:var(--display);font-size:26px;color:var(--vermelho)}
+.mascotes{width:100%;height:auto;display:block}
+
+/* categorias */
+.cats{background:var(--roxo-escuro);color:#fff;padding:80px 0}
+.cats h2{font-size:clamp(34px,5vw,56px);font-weight:800}
+.cats .intro{margin:12px 0 32px;max-width:36em;color:#E7DBFF}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+.chip{font-family:var(--display);font-weight:600;font-size:20px;padding:10px 20px;border-radius:999px;border:0;background:#fff;color:var(--roxo-escuro);cursor:pointer;transition:background .15s,color .15s}
+.chip .em{margin-right:6px}
+.chip[aria-pressed="true"]{background:var(--laranja);color:var(--noite)}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.parceiro{background:#fff;color:var(--texto);border-radius:22px;padding:22px}
+.parceiro .tipo{font-weight:700;color:var(--roxo)}
+.parceiro h3{font-size:26px;font-weight:800;margin:4px 0 14px}
+.selo{display:inline-block;font-weight:700;font-size:15px;padding:4px 12px;border-radius:999px;background:var(--noite);color:#fff}
+.selo.ex{background:#FFE3B8;color:var(--noite);margin-left:6px}
+.vazio{grid-column:1/-1;color:#E7DBFF}
+
+/* como funciona */
+.passos{padding:88px 0}
+.passos h2{font-size:clamp(34px,5vw,56px);font-weight:800;color:var(--roxo);margin-bottom:36px}
+.passos ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.passos li{border-top:6px solid var(--laranja);padding-top:18px}
+.passos li:nth-child(2){border-color:var(--vermelho)}
+.passos li:nth-child(3){border-color:var(--roxo)}
+.passos .n{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;color:var(--roxo)}
+.passos h3{font-size:28px;font-weight:800;margin:6px 0 8px}
+
+/* plano */
+.plano{background:var(--laranja);padding:80px 0}
+.cartao{max-width:520px;margin:0 auto;background:#fff;border-radius:32px;padding:40px;text-align:center}
+.cartao h2{font-size:32px;font-weight:800;color:var(--roxo)}
+.cartao .valor{font-family:var(--display);font-weight:800;font-size:84px;line-height:1.1;color:var(--vermelho);margin:8px 0 0}
+.cartao .valor small{font-size:28px;margin-right:4px}
+.cartao .per{font-weight:700;margin-bottom:22px}
+.cartao ul{list-style:none;padding:0;text-align:left;margin:0 0 28px;display:grid;gap:12px}
+.cartao li{display:flex;gap:12px;align-items:flex-start}
+.cartao li::before{content:"";flex:none;width:22px;height:22px;margin-top:4px;border-radius:50%;background:var(--roxo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.cartao .btn{display:block}
+
+footer{background:var(--noite);color:#CDBBFF;padding:36px 0;font-size:16px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;padding-bottom:48px}
+  .passos ol{grid-template-columns:1fr}
+  .marca span{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap topo">
+  <a class="marca" href="#" aria-label="Mais Um — início">
+    <svg viewBox="0 0 512 512" aria-hidden="true">
+      <defs><linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A00"/><stop offset=".5" stop-color="#EA1D2C"/><stop offset="1" stop-color="#6C2BD9"/></linearGradient></defs>
+      <rect width="512" height="512" rx="130" fill="url(#gi)"/>
+      <rect x="120" y="236" width="120" height="40" rx="20" fill="#fff"/>
+      <rect x="160" y="196" width="40" height="120" rx="20" fill="#fff"/>
+      <rect x="326" y="180" width="48" height="152" rx="24" fill="#fff"/>
+      <path d="M294 232 L342 196" stroke="#fff" stroke-width="46" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span>mais<i> um</i></span>
+  </a>
+  <a class="btn comprar" href="#plano">Quero meu acesso</a>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Compre um e ganhe outro.</h1>
+      <p>O Mais Um dá um cupom para cada estabelecimento parceiro. Você escolhe onde usar e leva o segundo de graça.</p>
+      <div class="acoes">
+        <a class="btn comprar" href="#plano">Quero meu acesso</a>
+        <a class="btn claro" href="#estabelecimentos">Ver estabelecimentos</a>
+      </div>
+      <p class="preco-mini"><b>R$ 79,90</b> por 1 ano de acesso</p>
+    </div>
+    <svg class="mascotes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" role="img" aria-label="Hambúrguer e drink vermelho, mascotes do Mais Um">
+<defs>
+<filter id="blur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+<radialGradient id="bunTop" cx="38%" cy="28%" r="80%"><stop offset="0" stop-color="#FFC15E"/><stop offset=".55" stop-color="#E8932A"/><stop offset="1" stop-color="#B8651A"/></radialGradient>
+<linearGradient id="bunBot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E39A38"/><stop offset="1" stop-color="#AD5F18"/></linearGradient>
+<linearGradient id="patty" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6B3719"/><stop offset="1" stop-color="#341708"/></linearGradient>
+<linearGradient id="cheese" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD84A"/><stop offset="1" stop-color="#F2A900"/></linearGradient>
+<linearGradient id="tomato" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0503F"/><stop offset="1" stop-color="#B91F1A"/></linearGradient>
+<linearGradient id="alface" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9AD44E"/><stop offset="1" stop-color="#3F8F2B"/></linearGradient>
+<linearGradient id="liquido" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF4A57"/><stop offset=".6" stop-color="#D6101F"/><stop offset="1" stop-color="#8E0014"/></linearGradient>
+<clipPath id="vidro"><path d="M386 176 H514 L498 410 Q496 430 478 430 H422 Q404 430 402 410 Z"/></clipPath>
+</defs>
+<style>
+.bob{transform-box:fill-box;transform-origin:50% 100%;animation:bob 3s ease-in-out infinite}
+.bob2{animation-delay:1.5s}
+.eyes{transform-box:fill-box;transform-origin:center;animation:bl 5s infinite}
+.sombra{transform-box:fill-box;transform-origin:center;animation:sb 3s ease-in-out infinite}
+.sombra2{animation-delay:1.5s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes sb{0%,100%{transform:scale(1)}50%{transform:scale(.93)}}
+@keyframes bl{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+</style>
+
+<ellipse class="sombra" cx="210" cy="446" rx="122" ry="12" fill="#2B1055" opacity=".28" filter="url(#blur)"/>
+<ellipse class="sombra sombra2" cx="450" cy="446" rx="70" ry="10" fill="#2B1055" opacity=".28" filter="url(#blur)"/>
+
+<!-- HAMBURGUER -->
+<g class="bob">
+  <path d="M104 372 H316 Q324 432 262 436 H158 Q96 432 104 372 Z" fill="url(#bunBot)"/>
+  <path d="M120 420 Q210 434 300 420" stroke="#8A4A10" stroke-width="3" fill="none" opacity=".35" stroke-linecap="round"/>
+  <path d="M92 352 Q88 336 110 334 H310 Q332 336 328 352 Q332 376 308 382 H112 Q88 376 92 352 Z" fill="url(#patty)"/>
+  <g fill="#1F0D04" opacity=".55"><ellipse cx="130" cy="352" rx="9" ry="4"/><ellipse cx="176" cy="366" rx="7" ry="3"/><ellipse cx="226" cy="354" rx="10" ry="4"/><ellipse cx="270" cy="368" rx="8" ry="3.5"/><ellipse cx="300" cy="350" rx="6" ry="3"/><ellipse cx="156" cy="344" rx="5" ry="2.5"/></g>
+  <g fill="#8A5326" opacity=".6"><ellipse cx="146" cy="364" rx="6" ry="2.5"/><ellipse cx="200" cy="346" rx="7" ry="2.5"/><ellipse cx="250" cy="372" rx="6" ry="2.5"/><ellipse cx="284" cy="358" rx="5" ry="2"/></g>
+  <path d="M98 330 H322 L328 346 Q320 346 316 362 Q311 346 298 346 H122 Q109 346 104 362 Q100 346 92 346 Z" fill="url(#cheese)"/>
+  <path d="M110 334 H300" stroke="#fff" stroke-width="3" opacity=".35" stroke-linecap="round"/>
+  <path d="M108 312 H312 Q320 322 308 330 H112 Q100 322 108 312 Z" fill="url(#tomato)"/>
+  <path d="M120 318 H280" stroke="#fff" stroke-width="3" opacity=".3" stroke-linecap="round"/>
+  <path d="M94 292 Q108 318 126 300 Q142 324 158 304 Q176 326 192 306 Q210 328 228 306 Q244 326 262 304 Q278 324 294 302 Q310 320 326 292 L326 282 L94 282 Z" fill="url(#alface)"/>
+  <path d="M110 300 Q126 314 140 304 M186 308 Q204 320 220 308 M262 306 Q278 316 292 304" stroke="#C8F08A" stroke-width="2.5" fill="none" opacity=".55" stroke-linecap="round"/>
+  <path d="M96 296 Q88 150 210 146 Q332 150 324 296 Z" fill="url(#bunTop)"/>
+  <ellipse cx="164" cy="178" rx="46" ry="20" fill="#fff" opacity=".22" transform="rotate(-24 164 178)"/>
+  <g fill="#FFF3D6">
+    <ellipse cx="162" cy="166" rx="7.5" ry="3.8" transform="rotate(-25 162 166)"/>
+    <ellipse cx="206" cy="158" rx="7.5" ry="3.8" transform="rotate(8 206 158)"/>
+    <ellipse cx="250" cy="166" rx="7.5" ry="3.8" transform="rotate(24 250 166)"/>
+    <ellipse cx="284" cy="192" rx="7.5" ry="3.8" transform="rotate(50 284 192)"/>
+    <ellipse cx="130" cy="196" rx="7.5" ry="3.8" transform="rotate(-48 130 196)"/>
+    <ellipse cx="228" cy="184" rx="7" ry="3.6" transform="rotate(-10 228 184)"/>
+    <ellipse cx="186" cy="188" rx="7" ry="3.6" transform="rotate(16 186 188)"/>
+    <ellipse cx="302" cy="238" rx="7" ry="3.6" transform="rotate(72 302 238)"/>
+    <ellipse cx="116" cy="244" rx="7" ry="3.6" transform="rotate(-70 116 244)"/>
+  </g>
+  <g class="eyes">
+    <ellipse cx="176" cy="234" rx="12" ry="14" fill="#fff"/><ellipse cx="244" cy="234" rx="12" ry="14" fill="#fff"/>
+    <circle cx="178" cy="236" r="8" fill="#5B3A1E"/><circle cx="246" cy="236" r="8" fill="#5B3A1E"/>
+    <circle cx="178" cy="236" r="4" fill="#1A0D05"/><circle cx="246" cy="236" r="4" fill="#1A0D05"/>
+    <circle cx="181" cy="232" r="2.6" fill="#fff"/><circle cx="249" cy="232" r="2.6" fill="#fff"/>
+  </g>
+  <ellipse cx="152" cy="258" rx="12" ry="7" fill="#E9573F" opacity=".35"/>
+  <ellipse cx="268" cy="258" rx="12" ry="7" fill="#E9573F" opacity=".35"/>
+  <path d="M188 262 Q210 282 232 262" stroke="#6E3510" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g>
+
+<!-- + -->
+<g>
+  <rect x="340" y="294" width="36" height="12" rx="6" fill="#6C2BD9" stroke="#fff" stroke-width="3"/>
+  <rect x="352" y="282" width="12" height="36" rx="6" fill="#6C2BD9" stroke="#fff" stroke-width="3"/>
+  <rect x="340" y="294" width="36" height="12" rx="6" fill="#6C2BD9"/>
+</g>
+
+<!-- DRINK VERMELHO -->
+<g class="bob bob2">
+  <path d="M386 176 H514 L498 410 Q496 430 478 430 H422 Q404 430 402 410 Z" fill="#fff" opacity=".16"/>
+  <g clip-path="url(#vidro)">
+    <rect x="380" y="210" width="140" height="224" fill="url(#liquido)"/>
+    <ellipse cx="450" cy="210" rx="64" ry="8" fill="#FF7A80" opacity=".9"/>
+    <g fill="#fff" fill-opacity=".28" stroke="#fff" stroke-opacity=".6" stroke-width="2">
+      <rect x="410" y="214" width="36" height="36" rx="8" transform="rotate(-14 428 232)"/>
+      <rect x="452" y="224" width="34" height="34" rx="8" transform="rotate(12 469 241)"/>
+      <rect x="430" y="256" width="32" height="32" rx="8" transform="rotate(6 446 272)"/>
+    </g>
+    <path d="M396 190 L410 190 L414 416 L406 416 Z" fill="#fff" opacity=".28"/>
+  </g>
+  <path d="M386 176 H514 L498 410 Q496 430 478 430 H422 Q404 430 402 410 Z" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+  <ellipse cx="450" cy="176" rx="64" ry="8" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+  <path d="M468 300 L496 128 L536 114" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M468 300 L496 128 L536 114" stroke="#EA1D2C" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 12"/>
+  <g transform="translate(512 180)">
+    <circle r="30" fill="#FF9A1F"/><circle r="25" fill="#FFC46B"/>
+    <g stroke="#FFE7B8" stroke-width="3" stroke-linecap="round"><path d="M0 0V-24M0 0V24M0 0H-24M0 0H24M0 0L17 -17M0 0L-17 17M0 0L17 17M0 0L-17 -17"/></g>
+    <circle r="4" fill="#FFE7B8"/>
+  </g>
+  <g fill="#fff" opacity=".55"><circle cx="396" cy="270" r="3"/><circle cx="399" cy="312" r="2.5"/><circle cx="500" cy="318" r="3"/><circle cx="494" cy="362" r="2.5"/><circle cx="412" cy="380" r="2"/></g>
+  <g class="eyes">
+    <ellipse cx="428" cy="334" rx="11" ry="13" fill="#fff"/><ellipse cx="472" cy="334" rx="11" ry="13" fill="#fff"/>
+    <circle cx="430" cy="336" r="7.5" fill="#5B1A1A"/><circle cx="474" cy="336" r="7.5" fill="#5B1A1A"/>
+    <circle cx="430" cy="336" r="3.8" fill="#1A0505"/><circle cx="474" cy="336" r="3.8" fill="#1A0505"/>
+    <circle cx="433" cy="332" r="2.4" fill="#fff"/><circle cx="477" cy="332" r="2.4" fill="#fff"/>
+  </g>
+  <ellipse cx="412" cy="358" rx="10" ry="6" fill="#FF8A8A" opacity=".35"/>
+  <ellipse cx="488" cy="358" rx="10" ry="6" fill="#FF8A8A" opacity=".35"/>
+  <path d="M434 360 Q450 378 466 360" stroke="#4A0010" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g>
+</svg>
+
+  </section>
+
+  <section class="cats" id="estabelecimentos">
+    <div class="wrap">
+      <h2>Onde você usa seu cupom</h2>
+      <p class="intro">Escolha uma categoria e veja os estabelecimentos que participam. Cada um tem o seu cupom, de uso único.</p>
+      <div class="chips" id="chips" role="group" aria-label="Categorias"></div>
+      <div class="lista" id="lista" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="wrap passos" id="como-funciona">
+    <h2>Como funciona</h2>
+    <ol>
+      <li><div class="n">1</div><h3>Faça seu acesso</h3><p>Pague uma vez e use o aplicativo por 1 ano.</p></li>
+      <li><div class="n">2</div><h3>Escolha o lugar</h3><p>Veja os restaurantes, pizzarias, padarias, cafeterias e outros estabelecimentos parceiros.</p></li>
+      <li><div class="n">3</div><h3>Use o cupom</h3><p>Compre um e ganhe outro. Cada cupom vale uma única vez em cada estabelecimento.</p></li>
+    </ol>
+  </section>
+
+  <section class="plano" id="plano">
+    <div class="wrap">
+      <div class="cartao">
+        <h2>Acesso Mais Um</h2>
+        <p class="valor"><small>R$</small>79,90</p>
+        <p class="per">por 1 ano de acesso</p>
+        <ul>
+          <li>Acesso ao aplicativo por 1 ano</li>
+          <li>1 cupom para cada estabelecimento parceiro</li>
+          <li>Cada cupom pode ser usado uma única vez</li>
+        </ul>
+        <a class="btn comprar" href="#">Quero meu acesso</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="ano"></span> Mais Um. Compre um e ganhe outro.</span>
+    <span>Cada cupom pode ser usado uma única vez por estabelecimento.</span>
+  </div>
+</footer>
+
+<script>
+/* ===== EDITE AQUI ===== */
+// Link do botão "Quero meu acesso" (WhatsApp, Pix, checkout...). Ex.: "https://wa.me/55DDDNUMERO"
+const LINK_COMPRA = "#plano";
+
+const CATEGORIAS = [
+  { id: "restaurante",  nome: "Restaurante",           emoji: "🍽️" }, // à la carte, self-service, por quilo, rodízio
+  { id: "churrascaria", nome: "Churrascaria",          emoji: "🥩" },
+  { id: "pizzaria",     nome: "Pizzaria",              emoji: "🍕" },
+  { id: "hamburgueria", nome: "Hamburgueria",          emoji: "🍔" },
+  { id: "lanchonete",   nome: "Lanchonete",            emoji: "🥪" },
+  { id: "cafeteria",    nome: "Cafeteria",             emoji: "☕" },
+  { id: "padaria",      nome: "Padaria",               emoji: "🥖" },
+  { id: "confeitaria",  nome: "Confeitaria / doceria", emoji: "🧁" },
+  { id: "sorveteria",   nome: "Sorveteria / açaiteria",emoji: "🍨" },
+  { id: "pastelaria",   nome: "Pastelaria",            emoji: "🥟" },
+  { id: "creperia",     nome: "Creperia",              emoji: "🥞" },
+  { id: "sushi",        nome: "Sushi bar / japonês",   emoji: "🍣" }
+];
+
+// Troque os exemplos pelos estabelecimentos reais (tire a linha "exemplo: true").
+// "detalhe" é opcional (ex.: "Rodízio", "Self-service", "Por quilo", "À la carte").
+const PARCEIROS = [
+  { nome: "Restaurante Exemplo",   categoria: "restaurante",  detalhe: "Self-service", exemplo: true },
+  { nome: "Churrascaria Exemplo",  categoria: "churrascaria", detalhe: "Rodízio",      exemplo: true },
+  { nome: "Pizzaria Exemplo",      categoria: "pizzaria",     exemplo: true },
+  { nome: "Burger Exemplo",        categoria: "hamburgueria", exemplo: true },
+  { nome: "Lanchonete Exemplo",    categoria: "lanchonete",   exemplo: true },
+  { nome: "Café Exemplo",          categoria: "cafeteria",    exemplo: true },
+  { nome: "Padaria Exemplo",       categoria: "padaria",      exemplo: true },
+  { nome: "Doceria Exemplo",       categoria: "confeitaria",  exemplo: true },
+  { nome: "Sorveteria Exemplo",    categoria: "sorveteria",   exemplo: true },
+  { nome: "Pastelaria Exemplo",    categoria: "pastelaria",   exemplo: true },
+  { nome: "Creperia Exemplo",      categoria: "creperia",     exemplo: true },
+  { nome: "Sushi Exemplo",         categoria: "sushi",        exemplo: true }
+];
+/* ===== FIM ===== */
+
+document.querySelectorAll(".comprar").forEach(a => { if (a.getAttribute("href") === "#") a.href = LINK_COMPRA; });
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+const chips = document.getElementById("chips");
+const lista = document.getElementById("lista");
+let atual = "todas";
+
+function desenhaChips() {
+  const todas = [{ id: "todas", nome: "Todas", emoji: "⭐" }, ...CATEGORIAS];
+  chips.innerHTML = "";
+  todas.forEach(c => {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(c.id === atual));
+    b.innerHTML = '<span class="em" aria-hidden="true">' + c.emoji + "</span>" + c.nome;
+    b.addEventListener("click", () => { atual = c.id; desenhaChips(); desenhaLista(); });
+    chips.appendChild(b);
+  });
+}
+
+function desenhaLista() {
+  const itens = PARCEIROS.filter(p => atual === "todas" || p.categoria === atual);
+  lista.innerHTML = "";
+  if (!itens.length) {
+    lista.innerHTML = '<p class="vazio">Em breve teremos estabelecimentos nesta categoria.</p>';
+    return;
+  }
+  itens.forEach(p => {
+    const cat = CATEGORIAS.find(c => c.id === p.categoria);
+    const el = document.createElement("article");
+    el.className = "parceiro";
+    el.innerHTML = '<div class="tipo">' + (cat ? cat.emoji + " " + cat.nome : "") + (p.detalhe ? " · " + p.detalhe : "") + "</div>" +
+      "<h3></h3>" +
+      '<span class="selo">1 cupom · uso único</span>' + (p.exemplo ? '<span class="selo ex">Exemplo</span>' : "");
+    el.querySelector("h3").textContent = p.nome;
+    lista.appendChild(el);
+  });
+}
+
+desenhaChips();
+desenhaLista();
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll("svg").forEach(s => s.pauseAnimations && s.pauseAnimations());
+}
+</script>
+</body>
+</html>
